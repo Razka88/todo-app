@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body + base font */
+body {
+    font-family: 'Varela Round', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 20px;
+}
+
+/* Layout */
+header,
+main,
+footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Task Input */
+#taskInput {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#taskInput input,
+#taskInput button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#taskInput input[type="text"] {
+    flex: 2;
+}
+
+#taskInput input[type="date"] {
+    flex: 1;
+}
+
+#taskInput button {
+    background-color: #1976d2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#taskInput button:hover {
+    background-color: #1565c0;
+}
+
+#taskInput button:active {
+    transform: scale(0.98);
+}
+
+/* Filters and Sorting */
+#taskFilters,
+#taskSorting {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#taskFilters button,
+#taskSorting button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: 1px solid #aaa;
+    background-color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 120px;
+}
+
+#taskFilters button:hover,
+#taskSorting button:hover {
+    background-color: #e3f2fd;
+}
+
+#taskFilters button:active,
+#taskSorting button:active {
+    transform: scale(0.97);
+}
+
+/* Task List */
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    transition: box-shadow 0.3s;
+    flex-wrap: wrap;
+}
+
+#taskList li span {
+    flex: 1 1 60%;
+    word-break: break-word;
+}
+
+#taskList li div {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+#taskList li:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Task Completion */
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Action Buttons (Complete/Delete) */
+#taskList .complete-btn,
+#taskList .delete-btn {
+    margin-left: 8px;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+#taskList .complete-btn {
+    background-color: #43a047;
+    color: white;
+}
+
+#taskList .complete-btn:hover {
+    background-color: #388e3c;
+}
+
+#taskList .delete-btn {
+    background-color: #e53935;
+    color: white;
+}
+
+#taskList .delete-btn:hover {
+    background-color: #c62828;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #taskInput {
+        flex-direction: column;
+    }
+
+    #taskInput input,
+    #taskInput button {
+        width: 100%;
+    }
+
+    #taskFilters,
+    #taskSorting {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #taskFilters button,
+    #taskSorting button {
+        width: 100%;
+    }
+}
+
+/* Smooth fade-in for task items */
+#taskList li {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInTask 0.4s ease forwards;
+}
+
+@keyframes fadeInTask {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth removal (optional, JS needed) */
+.fade-out {
+    animation: fadeOutTask 0.3s ease forwards;
+}
+
+@keyframes fadeOutTask {
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Completion transition */
+#taskList li span {
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Hover transitions */
+#taskList li,
+#taskList .complete-btn,
+#taskList .delete-btn {
+    transition: all 0.3s ease;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+#toggleDarkMode {
+    background-color: #ddd;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#toggleDarkMode:hover {
+    background-color: #ccc;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #eee;
+}
+
+body.dark-mode h1 {
+    color: #f5f5f5;
+}
+
+body.dark-mode input,
+body.dark-mode button,
+body.dark-mode #taskList li {
+    background-color: #1e1e1e;
+    color: #eee;
+    border-color: #333;
+}
+
+body.dark-mode #taskInput button,
+body.dark-mode #taskFilters button,
+body.dark-mode #taskSorting button {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark-mode #taskInput button:hover,
+body.dark-mode #taskFilters button:hover,
+body.dark-mode #taskSorting button:hover {
+    background-color: #444;
+}
+
+body.dark-mode #toggleDarkMode {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark-mode #toggleDarkMode:hover {
+    background-color: #444;
+}
+
+/* Undo Button - Fixed position and fade-in */
+#undoButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #323232;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#undoButton.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#undoButton:hover {
+    background-color: #4a4a4a;
+}

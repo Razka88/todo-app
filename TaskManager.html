@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+
+    <div id="themeToggle">
+        <button id="toggleDarkMode">🌙 Dark Mode</button>
+    </div>
+
+
+    <main>
+        <div id="taskInput">
+            <input type="text" id="taskText" placeholder="Enter task..." />
+            <input type="date" id="taskDate" />
+            <button id="addButton">Add Task</button>
+        </div>
+
+        <div id="taskFilters">
+            <button class="filter-button" data-filter="all">All</button>
+            <button class="filter-button" data-filter="active">Active</button>
+            <button class="filter-button" data-filter="completed">Completed</button>
+        </div>
+
+
+
+        <div id="taskSorting">
+            <button id="sortButton">Sort by Date</button>
+        </div>
+
+        <button id="undoButton">Undo Delete</button>
+
+        <ul id="taskList"></ul>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by Raz Krispin</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
